@@ -19,6 +19,17 @@ class Movie {
         $this->duration = $_duration;
         $this->genre = $_genre;
     }
+    // FUNZIONE PER TITOLO
+    public function getTitle() {
+        // Se title e original title sono uguali stampo solo title 
+        // invece se sono diversi li stampo entrambi
+        if ($this->title === $this->original_title) {
+            echo $this->title;
+        } else {
+            echo "Titolo: " . $this->title . "<br>";
+            echo "Titolo originale: " . $this->original_title;
+        }
+    }
 }
 
 // MY MOVIES ARRAY
@@ -60,6 +71,20 @@ $wwz = new Movie(
 );
 $movies[] = $wwz;
 
-var_dump($movies);
+// var_dump($movies);
 
 ?>
+
+<ul>
+    <?php foreach($movies as $movie) {?>
+
+        <li>
+            <h2><?php echo $movie->getTitle() ?></h2>
+            <p><?php echo "Overview: " . $movie->overview ?></p>
+            <p><?php echo "Lingua Originale: " .  $movie->original_lang ?></p>
+            <p><?php echo "Anno di uscita: " .$movie->year ?></p>
+            <p><?php echo "Genere: " . $movie->genre ?></p>
+        </li>
+
+    <?php } ?>
+</ul>
